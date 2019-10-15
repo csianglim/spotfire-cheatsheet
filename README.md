@@ -2,4 +2,6 @@
 Cheatsheet for Spotfire OVER expressions
 
 ## Difference between rows
-`[ColName] - Last([ColName) OVER Previous([Axis.X])`
+```
+[ColName] - Last([ColName]) OVER Previous([Axis.X])
+```
