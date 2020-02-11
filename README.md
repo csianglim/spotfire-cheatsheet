@@ -5,3 +5,7 @@ Cheatsheet for Spotfire OVER expressions
 ```
 [ColName] - Last([ColName]) OVER Previous([Axis.X])
 ```
+## Timespan in Minutes Per Tag
+```
+TotalMinutes([Timestamp] - Min([Timestamp]) OVER (AllPrevious([Tag Name])))
+```
