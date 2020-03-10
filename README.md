@@ -69,3 +69,9 @@ var opts = {
 observer.observe(target,opts);
 ```
 https://spotfired.blogspot.com/2017/09/trigger-javascript-from-dropdown-list.html
+
+## TERR Pass Through
+- Use TERR to pass rows and columns through from one table to another
+- Crosshairs 
+https://community.tibco.com/questions/there-anyway-replicate-cross-hairs-lines-move-and-update-marking
+https://datashoptalk.com/terr-in-spotfire-passing-marked-data-through-to-another-table/
