@@ -75,3 +75,24 @@ https://spotfired.blogspot.com/2017/09/trigger-javascript-from-dropdown-list.htm
 - Crosshairs 
 https://community.tibco.com/questions/there-anyway-replicate-cross-hairs-lines-move-and-update-marking
 https://datashoptalk.com/terr-in-spotfire-passing-marked-data-through-to-another-table/
+
+## IronPython Refresh Data with Progress Bars
+
+```
+import traceback
+import sys
+from Spotfire.Dxp.Framework.ApplicationModel import *
+ps = Application.GetService[ProgressService]()
+
+def execRefreshData():
+	try:
+		ps.CurrentProgress.ExecuteSubtask("Refreshing Data");
+		Document.Data.Tables.ReloadAllData()
+		proc.CurrentProgress.ExecuteSubtask("Refresh is Complete")
+	except:
+		traceback.print_exc()
+
+ps.ExecuteWithProgress("Refreshing Data", "Collecting DMC data from PI...", execRefreshData)
+```
+
+https://community.tibco.com/wiki/how-add-progress-bar-and-cancellation-option-when-executing-ironpython-scripts-tibco-spotfire
