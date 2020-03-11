@@ -14,6 +14,20 @@ https://community.tibco.com/questions/im-trying-calculate-difference-time-betwee
 TotalMinutes([Timestamp] - Min([Timestamp]) OVER (AllPrevious([Tag Name])))
 ```
 
+## Create an ascending grouped index per timestamp for each group
+```
+Rank([Timestamp],[Group])
+```
+
+https://community.tibco.com/questions/number-records-and-difference-same-column-based-previous-row-value
+
+> Yes, in the Rank() function just add as many different columns you need to group by:
+
+Rank(RowId(),[Name], [mygroup1],[mygroup2])
+But it sounds like you might want to order based on that date time. In that case you wouldn't rank the RowId(), but instead your date time column:
+
+Rank([mydatetime],[Name])
+
 ## Read values from a data table column using IronPython
 ```
 # import the DataValueCursor class
