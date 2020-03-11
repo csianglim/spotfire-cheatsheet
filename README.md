@@ -5,6 +5,10 @@ Cheatsheet for Spotfire OVER expressions
 ```
 [ColName] - Last([ColName]) OVER Previous([Axis.X])
 ```
+https://community.tibco.com/questions/im-trying-calculate-difference-time-between-values-same-column-data-consecutive-rows
+
+> This takes the current rows value in [myValue] and subtracts the [myValue] from the previous row (as determined by the [DateColumn] column). Note that an aggregation function is required for the OVER function, but since Previous() just returns a single row, the aggregation is irrelevant - Min(), Max(), Avg(), etc would all return the same original value.
+
 ## Timespan in Minutes Per Tag
 ```
 TotalMinutes([Timestamp] - Min([Timestamp]) OVER (AllPrevious([Tag Name])))
