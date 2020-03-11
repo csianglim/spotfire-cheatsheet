@@ -28,6 +28,18 @@ But it sounds like you might want to order based on that date time. In that case
 
 Rank([mydatetime],[Name])
 
+## Calculate difference between row n and row n-1 n per group
+
+```
+[Value] - First([Value]) OVER (Intersect([Group],Previous([Grouped Index])))
+```
+
+## Calculate difference between row n and row n+1 per group
+
+```
+[Value] - First([Value]) OVER (Intersect([Group],Next([Grouped Index])))
+```
+
 ## Read values from a data table column using IronPython
 ```
 # import the DataValueCursor class
