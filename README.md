@@ -9,6 +9,13 @@ https://community.tibco.com/questions/im-trying-calculate-difference-time-betwee
 
 > This takes the current rows value in [myValue] and subtracts the [myValue] from the previous row (as determined by the [DateColumn] column). Note that an aggregation function is required for the OVER function, but since Previous() just returns a single row, the aggregation is irrelevant - Min(), Max(), Avg(), etc would all return the same original value.
 
+## Count number of times character appears in a string
+```
+You can replace all occurrences of the character in your string and then compare the length of the trimmed string with the length of your original string:
+Len([Column 1]) - Len(Substitute([Column 1],"C",""))
+```
+https://community.tibco.com/questions/how-can-i-count-number-times-letter-appears-string-so-example-i-have-string-aaaabcdddddcdd
+
 ## Timespan in Minutes Per Tag
 ```
 TotalMinutes([Timestamp] - Min([Timestamp]) OVER (AllPrevious([Tag Name])))
