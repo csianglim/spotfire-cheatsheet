@@ -35,6 +35,21 @@ But it sounds like you might want to order based on that date time. In that case
 
 Rank([mydatetime],[Name])
 
+## Get the latest timestamp over intersection of tag names and tag groups
+
+```
+Max([Timestamp]) OVER (Intersect([Tagname],[Group]))
+```
+
+https://stackoverflow.com/questions/43002866/spotfire-how-to-get-the-last-value-in-a-column
+
+## Get the latest value of a group based on the timestamp
+
+```
+If([Timestamp]=Max([Timestamp]) OVER (Intersect([Tagname],[Group])),[Value])
+```
+
+
 ## Calculate difference between row n and row n-1 n per group
 
 ```
