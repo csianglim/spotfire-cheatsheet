@@ -1,4 +1,4 @@
-# VALID UP TO 30s intervals. For more granularity use supermultiyear_pull_from_pi -> splits into 6 month data tables
+# VALID UP TO 30s intervals. For more granularity use supermultiyear_pull_from_pi -> splits into quarterly data tables. valid up to 10s intervals
 
 import  clr
 clr.AddReference("SpotfirePS.Framework.OSIPIDataSource, Version=1.0.0.0,  \
