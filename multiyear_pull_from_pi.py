@@ -10,8 +10,10 @@ from  SpotfirePS.Framework.OSIPIDataSource.DataSource.TagData import  DataSource
 from  SpotfirePS.Framework.OSIPIDataSource.DataSource.TagData import  OSIPIDataSourceTagLocator
 from  SpotfirePS.Framework.OSIPIDataSource.DataSource.TagData import  TimeRange
 
+year_start = 2010
+year_end = 2021
 
-for year in range(2010,2021):
+for year in range(year_start,year_end):
 	print("Working on year: {}".format(year))
 	pm  = DataSourcePromptModel()
 	timerange = TimeRange (
@@ -44,3 +46,41 @@ for year in range(2010,2021):
 	  Document.Data.Tables[dataTableName].ReplaceData(ds)
 	else:
 	  Document.Data.Tables.Add(dataTableName, ds)
+
+# Merge into single data table
+# Copyright © 2017. TIBCO Software Inc. Licensed under TIBCO BSD-style license.
+from Spotfire.Dxp.Data import *
+from Spotfire.Dxp.Data.Import import DataTableDataSource
+
+#Define new table name
+newTableName = 'Data_Merged'
+
+#Define the source table
+inputTableDS = DataTableDataSource(Document.Data.Tables["Data_" + str(year_start)])
+
+#Function to return a Spotfire Data Table. Will return None if the data table does not exist
+#parameter: tableName - the name of the data table in the Spotfire document
+def getDataTable(tableName):
+    try:
+        return Document.Data.Tables[tableName]
+    except:
+        print ("Cannot find data table: " + tableName + ". Returning None")
+        return None
+
+#Check if new table already exists
+dt = getDataTable(newTableName)
+if dt != None:
+    #If exists, replace it
+    dt.ReplaceData(inputTableDS)
+else:
+    #If it does not exist, create new
+    Document.Data.Tables.Add(newTableName, inputTableDS)
+
+# The table where all other sources will be appended.
+outputTable = Document.Data.Tables[newTableName]
+
+for year in range(year_start,year_end):
+	# Input Table Data Source, Add row settings to create new column and set values depending on sources, then append the new rows
+	inputTableDS = DataTableDataSource(Document.Data.Tables["Data_" + str(year)])
+	addRowsSettings = AddRowsSettings(outputTable, inputTableDS)
+	outputTable.AddRows(inputTableDS, addRowsSettings)
