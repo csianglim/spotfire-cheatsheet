@@ -35,6 +35,11 @@ But it sounds like you might want to order based on that date time. In that case
 
 Rank([mydatetime],[Name])
 
+## Changepoint detection per tag name in narrow table
+```
+If([Value]!=First([Value]) OVER (Intersect(Previous([Timestamp]),[Tag Name])),1,null)
+```
+
 ## Get the latest timestamp over intersection of tag names and tag groups
 
 ```
