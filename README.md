@@ -153,3 +153,8 @@ ps.ExecuteWithProgress("Refreshing Data", "Collecting DMC data from PI...", exec
 ```
 
 https://community.tibco.com/wiki/how-add-progress-bar-and-cancellation-option-when-executing-ironpython-scripts-tibco-spotfire
+
+## SQL
+Use this Neat Window Function Trick to Calculate Time Differences in a Time Series
+
+https://blog.jooq.org/2015/05/12/use-this-neat-window-function-trick-to-calculate-time-differences-in-a-time-series/
