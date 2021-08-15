@@ -1,6 +1,11 @@
 # spotfire-cheatsheet
 Cheatsheet for Spotfire OVER expressions
 
+## Parse String as Datetime then get difference
+```
+Integer(DateDiff("minute", ParseDateTime("${startDateTime}", "MM/dd/yyyy hh:mm tt"), ParseDateTime("${endDateTime}", "MM/dd/yyyy hh:mm tt"))) + 1
+```
+
 ## Difference between rows
 ```
 [ColName] - Last([ColName]) OVER Previous([Axis.X])
